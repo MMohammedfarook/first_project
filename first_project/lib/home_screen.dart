@@ -50,6 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
   //const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    String? userName;
+    String? email;
+    String? password;
+    String? genderSelected;
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.black,

@@ -1,4 +1,5 @@
 import 'package:first_project/home_screen.dart';
+import 'package:first_project/sign_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: HomeScreen());
+        home: signscreen());
   }
 }
 
