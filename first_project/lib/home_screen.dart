@@ -2,6 +2,15 @@ import 'package:first_project/models/home_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
+  String? userName;
+  String? email;
+  String? password;
+  String? genderSelected;
+  HomeScreen(
+      {this.userName,
+      required this.email,
+      required this.password,
+      required this.genderSelected});
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -12,12 +21,12 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Homemodel> clock = [
     Homemodel(
         name: "clock",
-        image: AssetImage("assets/1.jpeg"),
+        image: AssetImage("assets/2.jpeg"),
         icon: Icon(Icons.alarm),
         subtitle: "foreign product"),
     Homemodel(
         name: "clock",
-        image: AssetImage("assets/2.jpeg"),
+        image: AssetImage("assets/1.jpeg"),
         icon: Icon(Icons.alarm),
         subtitle: "foreign product"),
     Homemodel(
@@ -50,10 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
   //const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    String? userName;
-    String? email;
-    String? password;
-    String? genderSelected;
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.black,
@@ -92,13 +97,14 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 40,
             ),
             CircleAvatar(
+              backgroundImage: AssetImage("assets/2.jpeg"),
               radius: 60,
               backgroundColor: Colors.white,
             ),
             SizedBox(
               height: 40,
             ),
-            Text("FAROOK MSD"),
+            Text(widget.userName! + "\n" + widget.email!),
             SizedBox(
               height: 40,
             ),
@@ -194,16 +200,20 @@ class _HomeScreenState extends State<HomeScreen> {
             // )),
             Expanded(
                 child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3),
-                    itemCount: clock.length,
-                    itemBuilder: ((context, i) {
-                      return Container(
-                        child: GridTile(
-                          child: CircleAvatar(backgroundImage: clock[i].image),
-                        ),
-                      );
-                    }))),
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+              itemCount: clock.length,
+              itemBuilder: ((context, i) {
+                return Container(
+                  child: GridTile(
+                    child: CircleAvatar(
+                      backgroundImage: clock[i].image,
+                      radius: 20,
+                    ),
+                  ),
+                );
+              }),
+            )),
             Expanded(
                 child: ListView.builder(
                     itemCount: clock.length,

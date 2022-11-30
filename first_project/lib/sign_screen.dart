@@ -55,6 +55,7 @@ class _signscreenState extends State<signscreen> {
                   ),
                   FormBuilderTextField(
                     name: "Email id",
+                    keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                         hintText: "Enter Email Id", labelText: "Email id"),
                     readOnly: false,
@@ -62,7 +63,8 @@ class _signscreenState extends State<signscreen> {
                     validator: FormBuilderValidators.compose(
                       [
                         FormBuilderValidators.required(
-                            errorText: "this field is required")
+                            errorText: "this field is required"),
+                        FormBuilderValidators.email()
                       ],
                     ),
                     onChanged: (value) {
@@ -128,10 +130,11 @@ class _signscreenState extends State<signscreen> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => HomeScreen(
-                              // userName: userName!,
-                              // email:email!,
-                              // password: password!,
-                              // gender: genderSelected!,
+                                userName: userName!,
+                                email: email!,
+                                password: password!,
+                                genderSelected: 'gender',
+                                //gender: genderSelected!,
                               )));
                   formKey.currentState!.fields['User Name']!.reset();
                   formKey.currentState!.fields['email']!.reset();
